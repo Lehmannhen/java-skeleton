@@ -8,7 +8,10 @@ public class Question1 {
         int tempMergedPort;
         int n = portfolios.length;
 
-        Arrays.sort(portfolios);
+        if (n == 1) {
+            return portfolios[0];
+        }
+
         for (int i = 0; i < n - 1; i++) {
             for (int j = i + 1; j < n; j++) {
                 tempMergedPort = portfolios[i] ^ portfolios[j];
