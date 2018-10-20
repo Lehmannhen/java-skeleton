@@ -4,13 +4,9 @@ import java.util.Arrays;
 public class Question1 {
 
     public static int bestMergedPortfolio(int[] portfolios) {
-        int maxMergedPort = -1;
+        int maxMergedPort = 0;
         int tempMergedPort;
         int n = portfolios.length;
-
-        if (n == 1) {
-            return portfolios[0];
-        }
 
         for (int i = 0; i < n - 1; i++) {
             for (int j = i + 1; j < n; j++) {
