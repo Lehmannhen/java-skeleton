@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Question1 {
 
-	public static int bestMergedPortfolio(int[] portfolios) {
+    public static int bestMergedPortfolio(int[] portfolios) {
         int maxMergedPort = -1;
         int tempMergedPort;
 
@@ -14,6 +14,6 @@ public class Question1 {
                 maxMergedPort = tempMergedPort;
         }
         return maxMergedPort;
-	}
+    }
 
 }
