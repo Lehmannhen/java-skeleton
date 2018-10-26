@@ -5,13 +5,13 @@ public class Question5 {
 
 	public static int shareExchange(int[] allowedAllocations, int totalValue) {
 
-        if (allowedAllocations == null)
+        if (allowedAllocations == null || allowedAllocations.length == 0)
             return 0;
 
         int[] dynamicP = new int[totalValue + 1];
 
         // No overflow issues
-        int max = Integer.MAX_VALUE - 3;
+        int max = Integer.MAX_VALUE - 1000000;
         dynamicP[0] = 0;
 
         for (int i = 1; i <= totalValue; i++)
