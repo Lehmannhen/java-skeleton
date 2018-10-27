@@ -1,5 +1,7 @@
 package answers;
 import java.lang.Math;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class Question5 {
 
@@ -8,10 +10,11 @@ public class Question5 {
         if (allowedAllocations == null || allowedAllocations.length == 0)
             return 0;
 
+        allowedAllocations = removeDuplicates(allowedAllocations);
         int[] dynamicP = new int[totalValue + 1];
 
         // No overflow issues
-        int max = Integer.MAX_VALUE - 1000000;
+        int max = Integer.MAX_VALUE / 2;
         dynamicP[0] = 0;
 
         for (int i = 1; i <= totalValue; i++)
@@ -31,4 +34,24 @@ public class Question5 {
             return dynamicP[totalValue];
 
 	}
+
+
+
+    public static int[] removeDuplicates(int[] allowedAllocations) {
+        HashSet<Integer> hs = new HashSet<Integer>();
+
+        for (int i = 0; i < allowedAllocations.length; i++) {
+            if (allowedAllocations[i] != 0) {
+                hs.add(allowedAllocations[i]);
+            }
+        }
+
+        int[] arr = new int[hs.size()];
+        int k = 0;
+        for (Iterator<Integer> iter = hs.iterator(); iter.hasNext();)
+            arr[k++] = iter.next();
+
+        return arr;
+    }
+
 }
