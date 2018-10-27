@@ -8,11 +8,10 @@ public class Question6 {
         PriorityQueue<Node> queue = new PriorityQueue<Node>();
         int[] distances = new int[numServers];
         boolean[] visited = new boolean[numServers];
-
         distances[0] = 0;
 
         for (int i = 1; i < distances.length; i++) {
-            distances[i] = Integer.MAX_VALUE;
+            distances[i] = Integer.MAX_VALUE / 2;
             visited[i] = false;
         }
 
@@ -22,10 +21,13 @@ public class Question6 {
         while (!queue.isEmpty()) {
             int fromVertex = queue.poll().vertex;
 
+            if (fromVertex == targetServer)
+                break;
+
             if (!visited[fromVertex]) {
                 visited[fromVertex] = true;
 
-                for (int v = 0; v < times[fromVertex].length; v++) {
+                for (int v = 0; v < numServers; v++) {
                     if (v != fromVertex) {
                         if (!visited[v]) {
                             int newDist = distances[fromVertex] + times[fromVertex][v];
@@ -61,3 +63,4 @@ class Node implements Comparable<Node> {
         return this.dist - n.dist;
     }
 }
+
