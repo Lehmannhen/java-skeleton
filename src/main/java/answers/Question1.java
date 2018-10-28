@@ -1,19 +1,28 @@
 package answers;
-import java.util.Arrays;
-import java.lang.Math;
+import java.util.HashSet;
 
 public class Question1 {
 
     public static int bestMergedPortfolio(int[] portfolios) {
-        int maxMergedPort = -1;
-        int tempMergedPort;
+        int maxPortfolio = 0;
+        int bitMask = 0;
 
-        Arrays.sort(portfolios);
-        for (int i = 0; i < portfolios.length - 1; i++) {
-            tempMergedPort = portfolios[i] ^ portfolios[i + 1];
-            maxMergedPort = Math.max(tempMergedPort, maxMergedPort);
+        for(int k = 31; k >= 0; k--) {
+            bitMask = bitMask | (1 << k);
+            HashSet<Integer> set = new HashSet<>();
+
+            int temp = maxPortfolio | (1 << k);
+            for (int i = 0; i < portfolios.length; i++) {
+                int stockAndMask = portfolios[i] & bitMask;
+                if (set.contains(temp ^ stockAndMask)) {
+                    maxPortfolio = temp;
+                    break;
+                }
+                set.add(stockAndMask);
+            }
+
         }
-        return maxMergedPort;
+        return maxPortfolio;
     }
 
 }
