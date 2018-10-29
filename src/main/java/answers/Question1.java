@@ -4,7 +4,7 @@ import java.lang.Math;
 public class Question1 {
 
     public static int bestMergedPortfolio(int[] portfolios) {
-        int maxPortfolio = -1;
+        int maxPortfolio = 0;
         int temp;
 
         for (int i = 0; i < portfolios.length - 1; i++) {
