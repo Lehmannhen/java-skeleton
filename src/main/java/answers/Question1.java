@@ -4,6 +4,7 @@ public class Question1 {
 
     public static int bestMergedPortfolio(int[] portfolios) {
         int maxPortfolio = 0;
+        int temp;
 
         for (int i = 0; i < portfolios.length - 1; i++) {
             for (int j = i + 1; j < portfolios.length; j++) {
